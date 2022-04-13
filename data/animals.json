@@ -108,6 +108,28 @@
         "hungry"
       ],
       "id": "10"
+    },
+    {
+      "name": "Billy",
+      "species": "Goat",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "hungry",
+        "anxious",
+        "goofy"
+      ],
+      "id": "11"
+    },
+    {
+      "name": "Ash",
+      "species": "Bull",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "zany",
+        "loving",
+        "goofy"
+      ],
+      "id": "12"
     }
   ]
 }
