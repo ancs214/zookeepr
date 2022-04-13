@@ -6,6 +6,11 @@ const PORT = process.env.PORT || 3001;
 //assign express() to the app variable so that we can later chain on methods to the Express.js server.
 const app = express();
 
+// parse incoming string or array data that will come from a POST request
+app.use(express.urlencoded({ extended: true }));
+// parse incoming JSON data
+app.use(express.json());
+
 //get method requires two arguments: 1. a string that describes the route the client will have to fetch from 2. a callback func that will execute every time that route is accessed w a GET request
 // app.get('/api/animals', (req, res) => {
 //     //using json() method from the res (response) object to send the JSON info to our client
@@ -16,6 +21,8 @@ const app = express();
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
 });
+
+
   //create func to filter results by query
   function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
@@ -57,13 +64,15 @@ app.listen(PORT, () => {
   }
 
 
+  //EXPLAIN THROUGH THIS ...
   function findById(id, animalsArray) {
     const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
   }
 
+  //GET ROUTE/ENDPOINT
   //get method requires path and req/res arguments
-  //req.query - often combines multiple parameters
+  //req.query - often combines MULTIPLE PARAMTERS
   app.get('/api/animals', (req, res) => {
     let results = animals;
    
@@ -78,7 +87,8 @@ app.listen(PORT, () => {
   });
 
 
-  //if user searches for a specific id, results will filter that specific id
+  // GET ROUTE/ENDPOINT
+  //if user searches for a specific id, results will filter that specific id (will come BEFORE the question mark)
   //req.params - specific to a single property/parameter
   app.get('/api/animals/:id', (req, res) => {
     const result = findById(req.params.id, animals);
@@ -91,3 +101,9 @@ app.listen(PORT, () => {
   });
   
   
+  //post req indicate a client requesting the server to accept data instead of vice versa
+  app.post('/api/animals', (req, res) => {
+    //req.body is where our INCOMING content will be. this can be risky accepting data, which is why most APIs require user authentication. validation libraries (expreess-validator npm) on the server side also ensure data meets certain criteria.
+    console.log(req.body);
+    res.json(req.body);
+  });
