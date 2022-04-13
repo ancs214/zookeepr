@@ -2,7 +2,7 @@
 const { animals } = require('./data/animals');
 const express = require('express');
 //tells heroku to use the environment variable they have set, if not default to 80
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3001;
 //assign express() to the app variable so that we can later chain on methods to the Express.js server.
 const app = express();
 
@@ -55,15 +55,39 @@ app.listen(PORT, () => {
     // return the filtered results:
     return filteredResults;
   }
-  //access query property on the req object
+
+
+  function findById(id, animalsArray) {
+    const result = animalsArray.filter(animal => animal.id === id)[0];
+    return result;
+  }
+
+  //get method requires path and req/res arguments
+  //req.query - often combines multiple parameters
   app.get('/api/animals', (req, res) => {
     let results = animals;
+   
     if (req.query) {
         //console.log(req.query);
 
         //run filterByQuery func
         results = filterByQuery(req.query, results);
     }
+    //if no query, return entire animals json file
     res.json(results);
   });
+
+
+  //if user searches for a specific id, results will filter that specific id
+  //req.params - specific to a single property/parameter
+  app.get('/api/animals/:id', (req, res) => {
+    const result = findById(req.params.id, animals);
+    if (result) {
+      res.json(result);
+    } else {
+      res.send(404);
+      //if resource could not be found, communicate to the client a 404 error
+    }
+  });
+  
   
