@@ -1,6 +1,7 @@
 
 const { animals } = require('./data/animals');
 const express = require('express');
+const PORT = process.env.PORT || 3001;
 //assign express() to the app variable so that we can later chain on methods to the Express.js server.
 const app = express();
 
@@ -10,10 +11,10 @@ const app = express();
 //     res.json(animals);
 //   });
 
-//chain the listen() method onto our server to make our server listen. when we type npm start into command line, it will console log `API server now on port 3001!`
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
-  });
+//chain the listen() method onto our server to make our server listen. when we type npm start into command line, it will console log `API server now on port...!`
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
+});
   //create func to filter results by query
   function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
