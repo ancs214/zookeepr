@@ -1,5 +1,7 @@
 //NOTE: animals.json is an object, with an array (animals) of objects (id, name, species, diet....etc)
 
+//NOTE: when deploying heroku app, you must add /api/animals to end of URL!!
+
 const fs = require('fs');
 const path = require('path');
 const { animals } = require('./data/animals');
