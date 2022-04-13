@@ -5,7 +5,7 @@ const path = require('path');
 const { animals } = require('./data/animals');
 const express = require('express');
 //tells heroku to use the environment variable they have set, if not default to 80
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 80;
 //assign express() to the app variable so that we can later chain on methods to the Express.js server.
 const app = express();
 
