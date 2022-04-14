@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
   
   //the * acts as a wildcard; any route not previously defined will fall under this request and go back to homepage
   router.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
   });
   
   

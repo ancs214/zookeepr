@@ -49,7 +49,7 @@ const getAnimals = (formData = {}) => {
   });
 };
 
-//gather form input data and package into an obj to send to getAnimals() as formData argument
+//gather form input data and package into an obj to pass as an argument to getAnimals() as an object 
 const handleGetAnimalsSubmit = event => {
   event.preventDefault();
   const dietRadioHTML = $animalForm.querySelectorAll('[name="diet"]');
