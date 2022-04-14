@@ -16,7 +16,7 @@ router.get('/animals', (req, res) => {
         //run filterByQuery func
         results = filterByQuery(req.query, results);
     }
-    //if no query, return entire animals json file
+    //if no query, return entire animals parsed to json
     res.json(results);
 });
 

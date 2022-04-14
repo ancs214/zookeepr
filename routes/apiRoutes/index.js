@@ -2,8 +2,10 @@
 const router = require('express').Router();
 const animalRoutes = require('../apiRoutes/animalRoutes');
 
-//we are using the router exported from animalRoutes.js file
+
+//we are using the router exported from animalRoutes.js and zookeeper.js file
 router.use(animalRoutes);
+router.use(require('./zookeeperRoutes'));
 
 module.exports = router;
 
